@@ -1,6 +1,3 @@
-# creating a list to store todos
-todo_list = []
-
 # loop to get inputs
 while True:
     user_action = input("Type add,show,edit,complete or exit : ").strip()
@@ -8,8 +5,16 @@ while True:
         case 'add':
             # getting the todo item
             todo_item = input("Enter a todo item : ") + "\n"
+
+            # now reading todo items from the file
+            file = open('todo.txt','r')
+            todo_list = file.readlines()
+            file.close()
+
             todo_list.append(todo_item)
-            file = open('todo.txt','w')
+
+            # writing todos in the text file
+            file = open('todo.txt', 'w')
             file.writelines(todo_list)
         case 'show':
             # getting list of todos
