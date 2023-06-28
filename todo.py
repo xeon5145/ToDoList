@@ -7,8 +7,10 @@ while True:
     match user_action:
         case 'add':
             # getting the todo item
-            todo_item = input("Enter a todo item : ")
+            todo_item = input("Enter a todo item : ") + "\n"
             todo_list.append(todo_item)
+            file = open('todo.txt','w')
+            file.writelines(todo_list)
         case 'show':
             # getting list of todos
             for index,item in enumerate(todo_list):
