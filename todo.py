@@ -17,10 +17,13 @@ while True:
             file = open('todo.txt', 'w')
             file.writelines(todo_list)
         case 'show':
+            file = open('todo.txt','r')
+            todo_list = file.readlines()
+            file.close()
+
             # getting list of todos
             for index,item in enumerate(todo_list):
                 item = item.title()
-
                 # making item coutn to start form 1 instead of 0
                 index = index+1
                 data = f"{index}. {item}"
