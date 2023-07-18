@@ -13,12 +13,11 @@ while True:
             todo_list.append(todo_item)
 
             # writing todos in the text file
-            file = open('todo.txt', 'w')
-            file.writelines(todo_list)
+            with open('todo.txt','w') as file:
+                file.writelines(todo_list)
         case 'show':
-            file = open('todo.txt','r')
-            todo_list = file.readlines()
-            file.close()
+            with open('todo.txt','r') as file:
+                todo_list = file.readlines()
 
             # getting list of todos
             for index,item in enumerate(todo_list):
