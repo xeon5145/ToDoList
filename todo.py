@@ -7,9 +7,8 @@ while True:
             todo_item = input("Enter a todo item : ") + "\n"
 
             # now reading todo items from the file
-            file = open('todo.txt','r')
-            todo_list = file.readlines()
-            file.close()
+            with open('todo.txt','r') as file: # with context manager we don't have to close the file
+                todo_list = file.readlines()
 
             todo_list.append(todo_item)
 
@@ -20,7 +19,7 @@ while True:
             file = open('todo.txt','r')
             todo_list = file.readlines()
             file.close()
-            
+
             # getting list of todos
             for index,item in enumerate(todo_list):
                 item = item.title().strip('\n')
