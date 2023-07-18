@@ -31,17 +31,39 @@ while True:
             # getting the todo item to edit
             number = int(input("Enter the Todo number to edit : "))
             number = number-1
-            
+            with open('todo.txt','r') as file:
+                todo_list = file.readlines()
+            todoPrevious = todo_list[number].strip('\n')
+
             # editing the item
             todo_item = input("Enter the new Todo : ")
-            todo_list[number] = todo_item
+            todo_list[number] = todo_item + '\n'
+
+            with open('todo.txt','w') as file:
+                file.writelines(todo_list)
+            
+            with open('todo.txt','r') as file:
+                todo_list = file.readlines()
+            todoNew = todo_list[number].strip('\n')
+            message = f"Todo {todoPrevious} has been changed to {todoNew}."
+            print(message)
+            
         case 'complete':
              # getting the todo item to mark as complete
             number = int(input("Enter the Todo number to complete : "))
             number = number-1
 
+            with open('todo.txt','r') as file:
+                todo_list = file.readlines()
+            todoRemoved = todo_list[number].strip('\n')
             # marking item as complete
             todo_list.pop(number)
+
+            with open('todo.txt','w') as file:
+                file.writelines(todo_list)
+
+            message = f"Todo {todoRemoved} has been completed."
+            print(message)
         case 'exit':
             break
         case undefinedInput:
